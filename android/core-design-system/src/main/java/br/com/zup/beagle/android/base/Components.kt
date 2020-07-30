@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package br.com.zup.beagle.android.abstract
+package br.com.zup.beagle.android.base
 
 interface Text
 interface Button

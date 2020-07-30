@@ -82,6 +82,7 @@ dependencies {
 
 
     testImplementation project(Dependencies.Modules.sharedTest)
+    testImplementation Dependencies.TestLibraries.archCoreTesting
 }
 
 apply from: rootProject.file('../maven-publish.gradle')

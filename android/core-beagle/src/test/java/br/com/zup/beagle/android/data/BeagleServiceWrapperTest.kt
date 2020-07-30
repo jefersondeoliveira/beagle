@@ -16,6 +16,7 @@
 
 package br.com.zup.beagle.android.data
 
+import br.com.zup.beagle.android.cache.CacheConstant
 import br.com.zup.beagle.core.ServerDrivenComponent
 import br.com.zup.beagle.android.data.serializer.BeagleSerializer
 import br.com.zup.beagle.android.extensions.once
@@ -76,6 +77,9 @@ class BeagleServiceWrapperTest {
 
         every { BeagleEnvironment.beagleSdk } returns mockk(relaxed = true)
 
+        CacheConstant.storeHandler = mockk()
+        CacheConstant.cache = mockk(relaxed = true)
+
         subject = BeagleServiceWrapper()
     }
 
@@ -89,7 +93,7 @@ class BeagleServiceWrapperTest {
     @Test
     fun fetch_when_success_should_call_onSuccess() = runBlockingTest {
         // GIVEN
-        subject.init(componentRequester,beagleSerializer)
+        subject.init(componentRequester, beagleSerializer)
         coEvery { componentRequester.fetchComponent(screenRequest) } returns component
         every { listener.onSuccess(any()) } just Runs
 
@@ -103,7 +107,7 @@ class BeagleServiceWrapperTest {
     @Test
     fun fetch_when_fail_should_call_onError() = runBlockingTest {
         // GIVEN
-        subject.init(componentRequester,beagleSerializer)
+        subject.init(componentRequester, beagleSerializer)
         coEvery { componentRequester.fetchComponent(screenRequest) } throws throwable
         every { listener.onError(any()) } just Runs
 
@@ -117,7 +121,7 @@ class BeagleServiceWrapperTest {
     @Test
     fun deserializeWidget_when_call_method() = runBlockingTest {
         // GIVEN
-        subject.init(componentRequester,beagleSerializer)
+        subject.init(componentRequester, beagleSerializer)
         val randomString = RandomData.string()
         every { beagleSerializer.deserializeComponent(randomString) } returns component
 
@@ -131,7 +135,7 @@ class BeagleServiceWrapperTest {
     @Test
     fun serializeWidget_when_call_method() = runBlockingTest {
         // GIVEN
-        subject.init(componentRequester,beagleSerializer)
+        subject.init(componentRequester, beagleSerializer)
         val randomString = RandomData.string()
         every { beagleSerializer.serializeComponent(component) } returns randomString
 

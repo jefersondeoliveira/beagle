@@ -25,8 +25,7 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
-import br.com.zup.beagle.R
-import br.com.zup.beagle.android.BaseTest
+import br.com.zup.beagle.android.R
 import br.com.zup.beagle.android.action.Action
 import br.com.zup.beagle.android.components.PathType
 import br.com.zup.beagle.android.components.layout.NavigationBar

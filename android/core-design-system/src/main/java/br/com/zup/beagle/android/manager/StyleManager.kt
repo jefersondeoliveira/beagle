@@ -23,9 +23,9 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
-import br.com.zup.beagle.android.abstract.Button
-import br.com.zup.beagle.android.abstract.TabView
-import br.com.zup.beagle.android.abstract.Text
+import br.com.zup.beagle.android.base.Button
+import br.com.zup.beagle.android.base.TabView
+import br.com.zup.beagle.android.base.Text
 import br.com.zup.beagle.android.core.design.system.R
 import br.com.zup.beagle.android.designsystem.constant.DesignSystemConstant
 import br.com.zup.beagle.android.setup.DesignSystem

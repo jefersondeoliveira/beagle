@@ -17,17 +17,18 @@
 package br.com.zup.beagle.android.utils
 
 import androidx.appcompat.app.AppCompatActivity
-import br.com.zup.beagle.android.BaseTest
 import br.com.zup.beagle.android.components.layout.NavigationBar
 import br.com.zup.beagle.android.components.layout.Screen
 import br.com.zup.beagle.android.context.ContextData
 import br.com.zup.beagle.android.context.expressionOf
-import br.com.zup.beagle.android.engine.renderer.ActivityRootView
 import br.com.zup.beagle.android.extensions.once
 import br.com.zup.beagle.android.testutil.RandomData
+import br.com.zup.beagle.android.utils.BeagleConstants.viewFactory
 import br.com.zup.beagle.android.view.ViewFactory
 import br.com.zup.beagle.android.view.custom.BeagleFlexView
-import br.com.zup.beagle.android.view.viewmodel.ScreenContextViewModel
+import br.com.zup.beagle.android.viewmodel.ScreenContextViewModel
+import br.com.zup.beagle.android.widget.ActivityRootView
+import br.com.zup.beagle.android.widget.ViewModelProviderFactory
 import br.com.zup.beagle.core.ServerDrivenComponent
 import br.com.zup.beagle.core.Style
 import io.mockk.every
@@ -43,7 +44,6 @@ class WidgetExtensionsKtTest : BaseTest() {
     private val rootView = mockk<ActivityRootView>()
     private val viewFactoryMock = mockk<ViewFactory>(relaxed = true)
     private val view = mockk<BeagleFlexView>(relaxed = true)
-
 
     private lateinit var viewModel: ScreenContextViewModel
 

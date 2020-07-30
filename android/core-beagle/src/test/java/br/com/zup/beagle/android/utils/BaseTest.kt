@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-package br.com.zup.beagle.android
+package br.com.zup.beagle.android.utils
 
+import br.com.zup.beagle.android.context.ContextConstant
+import br.com.zup.beagle.android.data.serializer.BeagleMoshi
+import br.com.zup.beagle.android.factory.logger.BeagleLoggerFactory
+import br.com.zup.beagle.android.logger.BeagleLoggerProxy
 import br.com.zup.beagle.android.setup.BeagleEnvironment
 import br.com.zup.beagle.android.setup.BeagleSdk
-import io.mockk.MockKAnnotations
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.mockkObject
-import io.mockk.unmockkAll
+import io.mockk.*
 import org.junit.After
 import org.junit.Before
 
-/*
 abstract class BaseTest {
 
     protected val beagleSdk = mockk<BeagleSdk>(relaxed = true)
@@ -36,9 +35,12 @@ abstract class BaseTest {
         MockKAnnotations.init(this)
 
         mockkObject(BeagleEnvironment)
+
         every { BeagleEnvironment.beagleSdk } returns beagleSdk
-        every { beagleSdk.registeredWidgets() } returns listOf()
-        every { beagleSdk.registeredActions() } returns listOf()
+
+        ContextConstant.moshi = mockk(relaxed = true)
+        BeagleLoggerProxy.isLoggingEnabled = true
+        BeagleLoggerProxy.logger = mockk(relaxed = true)
     }
 
     @After
@@ -46,4 +48,3 @@ abstract class BaseTest {
         unmockkAll()
     }
 }
-*/

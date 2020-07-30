@@ -16,10 +16,10 @@
 
 package br.com.zup.beagle.android.factory.networking.urlbuilder
 
-import br.com.zup.beagle.android.BaseTest
 import br.com.zup.beagle.android.networking.urlbuilder.UrlBuilder
 import br.com.zup.beagle.android.networking.urlbuilder.UrlBuilderDefault
 import br.com.zup.beagle.android.setup.BeagleEnvironment
+import br.com.zup.beagle.android.utils.BaseTest
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import org.junit.Test

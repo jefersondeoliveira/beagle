@@ -19,6 +19,7 @@ package br.com.zup.beagle.android.factory.store
 import android.database.sqlite.SQLiteDatabase
 import br.com.zup.beagle.android.setup.BeagleEnvironment
 import br.com.zup.beagle.android.store.BeagleDatabaseManager
+import br.com.zup.beagle.android.store.DatabaseContext
 import br.com.zup.beagle.android.store.StoreHandler
 import br.com.zup.beagle.android.store.StoreHandlerDefault
 import io.mockk.*
@@ -54,7 +55,7 @@ class StoreHandlerFactoryTest {
     fun make_should_return_default_value_when_storeHandler_is_null() {
         // Given
         val sqliteDatabase = mockk<SQLiteDatabase>()
-        every { beagleEnvironment.application } returns mockk()
+        DatabaseContext.context = mockk()
         every { beagleEnvironment.beagleSdk.storeHandler } returns null
         every { BeagleDatabaseManager.getDatabase(any()) } returns sqliteDatabase
 

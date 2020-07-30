@@ -89,7 +89,7 @@ class FormTest : BaseComponentTest() {
 
         mockkStatic("br.com.zup.beagle.android.components.utils.ViewExtensionsKt")
         mockkStatic("br.com.zup.beagle.android.utils.WidgetExtensionsKt")
-        mockkObject(BeagleMessageLogs)
+        mockkObject(ComponentsMessageLogs)
         mockkConstructor(FormValidatorController::class)
         mockkConstructor(FormValidation::class)
 

@@ -17,13 +17,15 @@
 
 package br.com.zup.beagle.android.data
 
-import br.com.zup.beagle.android.BaseTest
 import br.com.zup.beagle.android.cache.BeagleCache
 import br.com.zup.beagle.android.cache.CacheManager
 import br.com.zup.beagle.android.data.serializer.BeagleSerializer
 import br.com.zup.beagle.android.networking.RequestData
 import br.com.zup.beagle.android.networking.ResponseData
+import br.com.zup.beagle.android.testutil.RandomData
+import br.com.zup.beagle.android.utils.BaseTest
 import br.com.zup.beagle.android.view.ScreenRequest
+import br.com.zup.beagle.android.view.mapper.toRequestData
 import br.com.zup.beagle.core.ServerDrivenComponent
 import io.mockk.coEvery
 import io.mockk.coVerifySequence
@@ -103,8 +105,7 @@ class ComponentRequesterTest : BaseTest() {
         every { beagleCache.isHot } returns false
 
         every { cacheManager.restoreBeagleCacheForUrl(any()) } returns beagleCache
-        every { cacheManager.screenRequestWithCache(any(), any()) } returns SCREEN_REQUEST
-        every { any<ScreenRequest>().toRequestData(any(), any()) } returns requestData
+        every { cacheManager.requestDataWithCache(any(), any()) } returns requestData
         coEvery { beagleApi.fetchData(requestData) } returns responseData
         every { cacheManager.handleResponseData(any(), any(), any()) } returns RESPONSE_BODY
         every { serializer.deserializeComponent(any()) } returns component
@@ -115,7 +116,7 @@ class ComponentRequesterTest : BaseTest() {
         // Then
         coVerifySequence {
             cacheManager.restoreBeagleCacheForUrl(URL)
-            cacheManager.screenRequestWithCache(SCREEN_REQUEST, beagleCache)
+            cacheManager.requestDataWithCache(requestData, beagleCache)
             beagleApi.fetchData(requestData)
             cacheManager.handleResponseData(URL, beagleCache, responseData)
             serializer.deserializeComponent(RESPONSE_BODY)

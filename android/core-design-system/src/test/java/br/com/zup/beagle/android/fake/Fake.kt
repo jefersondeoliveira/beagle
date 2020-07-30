@@ -16,9 +16,9 @@
 
 package br.com.zup.beagle.android.fake
 
-import br.com.zup.beagle.android.abstract.Button
-import br.com.zup.beagle.android.abstract.TabView
-import br.com.zup.beagle.android.abstract.Text
+import br.com.zup.beagle.android.base.Button
+import br.com.zup.beagle.android.base.TabView
+import br.com.zup.beagle.android.base.Text
 import br.com.zup.beagle.core.IdentifierComponent
 import br.com.zup.beagle.core.Style
 import br.com.zup.beagle.core.StyleComponent

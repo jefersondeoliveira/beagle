@@ -19,6 +19,10 @@ package br.com.zup.beagle.android.widget
 import android.graphics.Color
 import android.widget.TextView
 import br.com.zup.beagle.android.extensions.once
+import br.com.zup.beagle.android.setup.BeagleEnvironment
+import br.com.zup.beagle.android.setup.Environment
+import br.com.zup.beagle.android.utils.BaseComponentTest
+import br.com.zup.beagle.android.view.ViewFactory
 import io.mockk.*
 import org.junit.Assert
 import org.junit.Test

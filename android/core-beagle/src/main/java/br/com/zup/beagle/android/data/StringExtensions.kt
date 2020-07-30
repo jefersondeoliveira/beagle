@@ -24,9 +24,8 @@ import br.com.zup.beagle.android.setup.BeagleEnvironment
 import java.net.URI
 
 internal fun String.toRequestData(urlBuilder: UrlBuilder = UrlBuilderFactory().make(),
-                                  beagleEnvironment: BeagleEnvironment = BeagleEnvironment,
                                   method: HttpMethod = HttpMethod.GET): RequestData {
-    val newUrl = this.formatUrl(urlBuilder, beagleEnvironment)
+    val newUrl = this.formatUrl(urlBuilder)
     return RequestData(
         uri = URI(newUrl),
         method = method
@@ -34,7 +33,6 @@ internal fun String.toRequestData(urlBuilder: UrlBuilder = UrlBuilderFactory().m
 }
 
 //todo removed internal
-fun String.formatUrl(urlBuilder: UrlBuilder = UrlBuilderFactory().make(),
-                              beagleEnvironment: BeagleEnvironment = BeagleEnvironment): String? {
-    return urlBuilder.format(beagleEnvironment.beagleSdk.config.baseUrl, this)
+fun String.formatUrl(urlBuilder: UrlBuilder = UrlBuilderFactory().make()): String? {
+    return urlBuilder.format(BeagleEnvironment.beagleSdk.config.baseUrl, this)
 }

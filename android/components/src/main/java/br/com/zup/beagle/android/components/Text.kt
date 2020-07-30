@@ -37,7 +37,7 @@ data class Text(
     val styleId: String? = null,
     val textColor: Bind<String>? = null,
     val alignment: Bind<TextAlignment>? = null
-) : WidgetView(), br.com.zup.beagle.android.abstract.Text {
+) : WidgetView(), br.com.zup.beagle.android.base.Text {
     constructor(
         text: String,
         styleId: String? = null,

@@ -17,8 +17,8 @@
 package br.com.zup.beagle.android.action
 
 import android.view.View
-import br.com.zup.beagle.android.BaseTest
 import br.com.zup.beagle.android.extensions.once
+import br.com.zup.beagle.android.utils.BaseTest
 import br.com.zup.beagle.android.view.BeagleActivity
 import br.com.zup.beagle.android.view.ServerDrivenState
 import br.com.zup.beagle.android.widget.RootView

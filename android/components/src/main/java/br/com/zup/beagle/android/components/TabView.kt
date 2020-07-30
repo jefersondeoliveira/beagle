@@ -24,7 +24,7 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import br.com.zup.beagle.android.abstract.TabView
+import br.com.zup.beagle.android.base.TabView
 import br.com.zup.beagle.android.context.ContextComponent
 import br.com.zup.beagle.android.context.ContextData
 import br.com.zup.beagle.android.setup.BeagleEnvironment

@@ -18,7 +18,7 @@ package br.com.zup.beagle.android.data
 
 import br.com.zup.beagle.android.networking.RequestData
 import br.com.zup.beagle.android.networking.urlbuilder.UrlBuilder
-import br.com.zup.beagle.android.setup.BeagleEnvironment
+import br.com.zup.beagle.android.utils.BaseTest
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkStatic
@@ -28,24 +28,18 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import java.net.URI
 
-class StringExtensionsKtTest {
+class StringExtensionsKtTest: BaseTest() {
 
     private val urlBuilder: UrlBuilder = mockk()
-    private val environment: BeagleEnvironment = mockk(relaxed = true)
-
-    @After
-    fun tearDown() {
-        unmockkAll()
-    }
 
     @Test
     fun `should return request data when using extension function to mapper`() {
         // Given
         mockkStatic("br.com.zup.beagle.android.data.StringExtensionsKt")
-        every { any<String>().formatUrl(any(), any()) } returns ""
+        every { any<String>().formatUrl(any()) } returns ""
 
         // When
-        val requestData = "".toRequestData(urlBuilder, environment)
+        val requestData = "".toRequestData(urlBuilder)
 
         // Then
         val expectedResult = RequestData(URI(""))
@@ -58,7 +52,7 @@ class StringExtensionsKtTest {
         every { urlBuilder.format(any(), "") } returns ""
 
         // When
-        val requestData = "".formatUrl(urlBuilder, environment)
+        val requestData = "".formatUrl(urlBuilder)
 
         // Then
         assertEquals("", requestData)

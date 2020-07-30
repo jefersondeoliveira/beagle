@@ -18,24 +18,27 @@ package br.com.zup.beagle.android.utils
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import br.com.zup.beagle.android.BaseTest
 import br.com.zup.beagle.android.action.Action
+import br.com.zup.beagle.android.context.ContextConstant
 import br.com.zup.beagle.android.context.ContextData
 import br.com.zup.beagle.android.context.expressionOf
-import br.com.zup.beagle.android.engine.renderer.ActivityRootView
 import br.com.zup.beagle.android.testutil.RandomData
-import br.com.zup.beagle.android.view.viewmodel.ScreenContextViewModel
+import br.com.zup.beagle.android.viewmodel.ScreenContextViewModel
+import br.com.zup.beagle.android.widget.ActivityRootView
+import br.com.zup.beagle.android.widget.ViewModelProviderFactory
+import com.squareup.moshi.Moshi
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
 import org.json.JSONArray
 import org.json.JSONObject
+import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class ActionExtensionsKtTest : BaseTest() {
+class ActionExtensionsKtTest {
 
     private val rootView = mockk<ActivityRootView>()
     private val action = mockk<Action>(relaxed = true)
@@ -43,17 +46,20 @@ class ActionExtensionsKtTest : BaseTest() {
 
     private lateinit var viewModel: ScreenContextViewModel
 
-    override fun setUp() {
-        super.setUp()
+    @Before
+    fun setUp() {
 
         mockkObject(ViewModelProviderFactory)
+
+        ContextConstant.moshi = Moshi.Builder().build()
 
         viewModel = ScreenContextViewModel()
 
         every { rootView.activity } returns mockk()
-        every { ViewModelProviderFactory
-            .of(any<AppCompatActivity>())
-            .get(ScreenContextViewModel::class.java)
+        every {
+            ViewModelProviderFactory
+                .of(any<AppCompatActivity>())
+                .get(ScreenContextViewModel::class.java)
         } returns viewModel
     }
 

@@ -17,7 +17,6 @@
 package br.com.zup.beagle.android.utils
 
 import android.app.Activity
-import android.os.IBinder
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -25,21 +24,19 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.TextViewCompat
 import androidx.fragment.app.Fragment
-import br.com.zup.beagle.android.utils.BaseTest
-import br.com.zup.beagle.android.engine.renderer.ActivityRootView
-import br.com.zup.beagle.android.engine.renderer.FragmentRootView
 import br.com.zup.beagle.android.extensions.once
 import br.com.zup.beagle.android.setup.BeagleEnvironment
 import br.com.zup.beagle.android.setup.DesignSystem
 import br.com.zup.beagle.android.testutil.RandomData
-import br.com.zup.beagle.android.utils.ViewModelProviderFactory
-import br.com.zup.beagle.android.utils.loadView
 import br.com.zup.beagle.android.view.ScreenRequest
 import br.com.zup.beagle.android.view.ViewFactory
 import br.com.zup.beagle.android.view.custom.BeagleView
 import br.com.zup.beagle.android.view.custom.OnLoadCompleted
 import br.com.zup.beagle.android.view.custom.OnStateChanged
-import br.com.zup.beagle.android.view.viewmodel.ScreenContextViewModel
+import br.com.zup.beagle.android.viewmodel.ScreenContextViewModel
+import br.com.zup.beagle.android.widget.ActivityRootView
+import br.com.zup.beagle.android.widget.FragmentRootView
+import br.com.zup.beagle.android.widget.ViewModelProviderFactory
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -48,7 +45,6 @@ import io.mockk.just
 import io.mockk.mockkObject
 import io.mockk.mockkStatic
 import io.mockk.slot
-import io.mockk.unmockkAll
 import io.mockk.verify
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -95,7 +91,7 @@ class ViewGroupExtensionsKtTest : BaseTest() {
 
         mockkStatic(TextViewCompat::class)
 
-        viewExtensionsViewFactory = viewFactory
+        BeagleConstants.viewFactory = viewFactory
 
         every { viewFactory.makeBeagleView(any()) } returns beagleView
         every { viewFactory.makeView(any()) } returns beagleView
@@ -159,30 +155,5 @@ class ViewGroupExtensionsKtTest : BaseTest() {
 
         // Then
         assertEquals(slot.captured, onStateChanged)
-    }
-
-    @Test
-    fun hideKeyboard_should_call_hideSoftInputFromWindow_with_currentFocus() {
-        // Given
-        every { activity.currentFocus } returns beagleView
-
-        // When
-        viewGroup.hideKeyboard()
-
-        // Then
-        verify(exactly = once()) { inputMethodManager.hideSoftInputFromWindow(any(), 0) }
-    }
-
-    @Test
-    fun hideKeyboard_should_call_hideSoftInputFromWindow_with_created_view() {
-        // Given
-        every { activity.currentFocus } returns null
-        every { viewExtensionsViewFactory.makeView(activity) } returns beagleView
-
-        // When
-        viewGroup.hideKeyboard()
-
-        // Then
-        verify(exactly = once()) { inputMethodManager.hideSoftInputFromWindow(any(), 0) }
     }
 }

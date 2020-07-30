@@ -19,20 +19,16 @@ package br.com.zup.beagle.android.utils
 import br.com.zup.beagle.android.manager.StyleManager
 import br.com.zup.beagle.android.view.ViewFactory
 
-object BeagleConstants {
-    const val DEPRECATED_PAGE_VIEW =
-        "This constructor will be removed in a future version, use the constructor with Bind"
-
+internal object BeagleConstants {
     const val FORM_DEPRECATED_MESSAGE = "use SimpleForm and SubmitForm instead"
+
+    var viewFactory = ViewFactory()
+    val styleManagerFactory = StyleManager()
 }
 
-object HandleEventDeprecatedConstants {
+internal object HandleEventDeprecatedConstants {
     const val HANDLE_EVENT_DEPRECATED_MESSAGE: String =
         "Use handleEvent without eventName and eventValue or with ContextData for create a implicit context"
     const val HANDLE_EVENT_POINTER: String = "handleEvent(rootView, origin, action)"
     const val HANDLE_EVENT_ACTIONS_POINTER: String = "handleEvent(rootView, origin, actions)"
 }
-
-//TODO REMOVED INTERNAL
-internal val viewExtensionsViewFactory = ViewFactory()
-internal val styleManagerFactory = StyleManager()

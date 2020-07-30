@@ -22,11 +22,12 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import br.com.zup.beagle.analytics.Analytics
 import br.com.zup.beagle.analytics.ScreenEvent
-import br.com.zup.beagle.android.components.BaseComponentTest
 import br.com.zup.beagle.android.extensions.once
+import br.com.zup.beagle.android.utils.BaseComponentTest
+import br.com.zup.beagle.android.utils.ToolbarManager
 import br.com.zup.beagle.android.view.BeagleActivity
 import br.com.zup.beagle.android.view.custom.BeagleFlexView
-import br.com.zup.beagle.android.view.ComponentsViewFactory
+import br.com.zup.beagle.android.view.ViewFactory
 import br.com.zup.beagle.core.Style
 import br.com.zup.beagle.core.ServerDrivenComponent
 import io.mockk.CapturingSlot
@@ -81,7 +82,7 @@ class ScreenComponentTest : BaseComponentTest() {
     fun build_should_create_a_screenWidget_with_grow_1_and_justifyContent_SPACE_BETWEEN() {
         // Given
         val style = slot<Style>()
-        every { anyConstructed<ComponentsViewFactory>().makeBeagleFlexView(any(), capture(style)) } returns beagleFlexView
+        every { anyConstructed<ViewFactory>().makeBeagleFlexView(any(), capture(style)) } returns beagleFlexView
         every { context.supportActionBar } returns null
 
         // When

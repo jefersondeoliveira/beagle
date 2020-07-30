@@ -25,15 +25,13 @@ import br.com.zup.beagle.android.context.ContextData
 import br.com.zup.beagle.android.utils.HandleEventDeprecatedConstants.HANDLE_EVENT_ACTIONS_POINTER
 import br.com.zup.beagle.android.utils.HandleEventDeprecatedConstants.HANDLE_EVENT_DEPRECATED_MESSAGE
 import br.com.zup.beagle.android.utils.HandleEventDeprecatedConstants.HANDLE_EVENT_POINTER
-import br.com.zup.beagle.android.view.ViewFactory
+import br.com.zup.beagle.android.utils.BeagleConstants.viewFactory
 import br.com.zup.beagle.android.viewmodel.ScreenContextViewModel
 import br.com.zup.beagle.android.widget.ActivityRootView
 import br.com.zup.beagle.android.widget.FragmentRootView
 import br.com.zup.beagle.android.widget.RootView
 import br.com.zup.beagle.android.widget.generateViewModelInstance
 import br.com.zup.beagle.core.ServerDrivenComponent
-
-internal var viewFactory = ViewFactory()
 
 /**
  * Execute a list of actions and create an implicit context with eventName and eventValue.

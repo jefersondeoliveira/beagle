@@ -24,7 +24,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import br.com.zup.beagle.android.action.Route
-import br.com.zup.beagle.android.components.Text
 import br.com.zup.beagle.android.components.layout.Screen
 import br.com.zup.beagle.android.extensions.once
 import br.com.zup.beagle.android.logger.BeagleLoggerProxy
@@ -187,7 +186,7 @@ class BeagleNavigatorTest {
     fun pushView_should_start_BeagleActivity() {
         // Given
         val context = mockk<Activity>()
-        val route = Route.Local(Screen(child = Text("stub")))
+        val route = Route.Local(Screen(child = mockk()))
         every { context.startActivity(any()) } just Runs
 
         // When

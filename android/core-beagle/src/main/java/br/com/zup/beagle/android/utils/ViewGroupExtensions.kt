@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import br.com.zup.beagle.android.data.serializer.BeagleSerializer
+import br.com.zup.beagle.android.utils.BeagleConstants.viewFactory
 import br.com.zup.beagle.android.view.BeagleFragment
 import br.com.zup.beagle.android.view.ScreenRequest
 import br.com.zup.beagle.android.view.custom.OnStateChanged
@@ -57,7 +58,7 @@ private fun loadView(
     screenRequest: ScreenRequest,
     listener: OnStateChanged?
 ) {
-    val view = viewExtensionsViewFactory.makeBeagleView(viewGroup.context).apply {
+    val view = viewFactory.makeBeagleView(viewGroup.context).apply {
         loadView(rootView, screenRequest)
         stateChangedListener = listener
     }

@@ -22,14 +22,14 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import br.com.zup.beagle.android.context.ContextData
-import br.com.zup.beagle.android.engine.renderer.ActivityRootView
 import br.com.zup.beagle.android.extensions.once
 import br.com.zup.beagle.android.view.viewmodel.ActionRequestViewModel
 import br.com.zup.beagle.android.view.viewmodel.Response
 import br.com.zup.beagle.android.context.valueOf
-import br.com.zup.beagle.android.utils.ViewModelProviderFactory
 import br.com.zup.beagle.android.utils.evaluateExpression
 import br.com.zup.beagle.android.utils.handleEvent
+import br.com.zup.beagle.android.widget.ActivityRootView
+import br.com.zup.beagle.android.widget.ViewModelProviderFactory
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
@@ -56,7 +56,6 @@ class SendRequestTest {
     private val liveData: MutableLiveData<ActionRequestViewModel.FetchViewState> = mockk()
     private val observerSlot = slot<Observer<ActionRequestViewModel.FetchViewState>>()
     private val responseData: Response = mockk()
-    private val contextData: ContextData = mockk()
     private val view: View = mockk()
     private val contextDataSlot = slot<ContextData>()
 

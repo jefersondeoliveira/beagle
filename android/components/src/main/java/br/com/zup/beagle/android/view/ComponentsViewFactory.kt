@@ -28,8 +28,6 @@ import br.com.zup.beagle.core.Style
 
 internal class ComponentsViewFactory {
 
-    fun makeView(context: Context) = View(context)
-
     fun makeBeagleView(context: Context) =
         BeagleView(context = context)
 
@@ -51,13 +49,9 @@ internal class ComponentsViewFactory {
 
     fun makeButton(context: Context, id: Int) = Button(ContextThemeWrapper(context, id), null, 0)
 
-    fun makeTextView(context: Context) = TextView(context)
-
     fun makeTextView(context: Context, id: Int) = TextView(ContextThemeWrapper(context, id), null, 0)
 
     fun makeInputText(context: Context, id: Int) = EditText(ContextThemeWrapper(context, id), null, 0)
-
-    fun makeAlertDialogBuilder(context: Context) = AlertDialog.Builder(context)
 
     fun makeFrameLayoutParams(width: Int, height: Int) = FrameLayout.LayoutParams(width, height)
 

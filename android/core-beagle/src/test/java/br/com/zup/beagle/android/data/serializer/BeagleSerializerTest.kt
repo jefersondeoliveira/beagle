@@ -12,19 +12,19 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 
 package br.com.zup.beagle.android.data.serializer
 
-import br.com.zup.beagle.android.BaseTest
 import br.com.zup.beagle.android.action.Action
 import br.com.zup.beagle.android.action.Navigate
 import br.com.zup.beagle.android.action.Route
-import br.com.zup.beagle.android.components.Button
 import br.com.zup.beagle.core.ServerDrivenComponent
 import br.com.zup.beagle.android.exception.BeagleException
 import br.com.zup.beagle.android.logger.BeagleMessageLogs
 import br.com.zup.beagle.android.testutil.RandomData
+import br.com.zup.beagle.android.utils.BaseTest
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import io.mockk.Runs
@@ -192,3 +192,4 @@ class BeagleSerializerTest: BaseTest() {
         assertTrue(actual is BeagleException)
     }
 }
+*/

@@ -32,8 +32,6 @@ abstract class BaseTest {
 
         mockkObject(BeagleEnvironment)
         every { BeagleEnvironment.beagleSdk } returns beagleSdk
-//        every { beagleSdk.registeredWidgets() } returns listOf()
-//        every { beagleSdk.registeredActions() } returns listOf()
     }
 
     @After

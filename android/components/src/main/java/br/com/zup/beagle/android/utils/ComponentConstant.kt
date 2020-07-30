@@ -18,6 +18,9 @@ package br.com.zup.beagle.android.utils
 
 import br.com.zup.beagle.android.manager.StyleManager
 
-object ComponentConstant  {
-    internal var styleManager = StyleManager()
+internal object ComponentConstant {
+    var styleManager = StyleManager()
+
+    const val DEPRECATED_PAGE_VIEW =
+        "This constructor will be removed in a future version, use the constructor with Bind"
 }

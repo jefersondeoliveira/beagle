@@ -14,29 +14,20 @@
  * limitations under the License.
  */
 
-
 package br.com.zup.beagle.android.data
 
-import br.com.zup.beagle.android.exception.BeagleApiException
 import br.com.zup.beagle.android.extensions.once
-import br.com.zup.beagle.android.logger.BeagleMessageLogs
 import br.com.zup.beagle.android.networking.HttpClient
 import br.com.zup.beagle.android.networking.RequestCall
 import br.com.zup.beagle.android.networking.RequestData
 import br.com.zup.beagle.android.networking.ResponseData
+import br.com.zup.beagle.android.networking.exception.BeagleApiException
+import br.com.zup.beagle.android.networking.logger.BeagleNetworkingLogs
 import br.com.zup.beagle.android.networking.urlbuilder.UrlBuilder
 import br.com.zup.beagle.android.setup.BeagleEnvironment
 import br.com.zup.beagle.android.testutil.RandomData
-import io.mockk.MockKAnnotations
-import io.mockk.Runs
-import io.mockk.every
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
-import io.mockk.just
-import io.mockk.mockk
-import io.mockk.mockkObject
-import io.mockk.slot
-import io.mockk.unmockkAll
-import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.After
@@ -79,7 +70,7 @@ class BeagleApiTest {
     fun setUp() {
         MockKAnnotations.init(this)
 
-        mockkObject(BeagleMessageLogs)
+        mockkObject(BeagleNetworkingLogs)
 
         beagleApi = BeagleApi(httpClient)
 
@@ -87,9 +78,9 @@ class BeagleApiTest {
 
         every { beagleEnvironment.beagleSdk.config.baseUrl } returns BASE_URL
         every { urlBuilder.format(any(), any()) } returns FINAL_URL
-        every { BeagleMessageLogs.logHttpRequestData(any()) } just Runs
-        every { BeagleMessageLogs.logHttpResponseData(any()) } just Runs
-        every { BeagleMessageLogs.logUnknownHttpError(any()) } just Runs
+        every { BeagleNetworkingLogs.logHttpRequestData(any()) } just Runs
+        every { BeagleNetworkingLogs.logHttpResponseData(any()) } just Runs
+        every { BeagleNetworkingLogs.logUnknownHttpError(any()) } just Runs
     }
 
     @After
@@ -103,7 +94,7 @@ class BeagleApiTest {
         val data = beagleApi.fetchData(REQUEST_DATA)
 
         // Then
-        verify(exactly = once()) { BeagleMessageLogs.logHttpResponseData(responseData) }
+        verify(exactly = once()) { BeagleNetworkingLogs.logHttpResponseData(responseData) }
         assertEquals(data, responseData)
     }
 
@@ -122,7 +113,7 @@ class BeagleApiTest {
 
         // Then
         assertEquals(expectedException.message, exceptionThrown.message)
-        verify(exactly = once()) { BeagleMessageLogs.logUnknownHttpError(expectedException) }
+        verify(exactly = once()) { BeagleNetworkingLogs.logUnknownHttpError(expectedException) }
     }
 
     @Test
